@@ -32,5 +32,5 @@
     failed_when: user_created.rc not in [0, 1]
 
   - name : create new user
-    shell : mysql -e "grant all privileges on wordpress.* to wordpress@localhost identified by 'password'"
+    shell : mysql -e "grant all privileges on wordpress.* to wordpress@'%' identified by 'password'"
     when: user_created.rc == 1
