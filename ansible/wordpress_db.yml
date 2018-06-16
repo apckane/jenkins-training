@@ -1,6 +1,7 @@
 ---
 - name: wordpress環境構築 for DB
   hosts: db
+  gather_facts: no
   remote_user: jenkins
   become: yes
 
