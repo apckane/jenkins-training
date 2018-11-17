@@ -1,6 +1,7 @@
 ---
 - name: wordpress環境構築 for web
   hosts: web
+  gather_facts: no
   remote_user: jenkins
   become: yes
 
@@ -45,6 +46,12 @@
 
   - name: httpサービスの起動
     service: name=httpd state=restarted
+
+  - name: NTPのインストール
+    yum: name=ntp state=latest
+
+  - name: NTPサービスの起動
+    service: name=ntpd state=started enabled=yes
 
   handlers:
   - name: restart httpd
